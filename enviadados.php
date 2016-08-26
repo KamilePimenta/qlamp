@@ -23,7 +23,7 @@ if (! isset($foto[ 'tmp_name' ]) || empty($foto[ 'tmp_name' ]) || ! preg_match('
 // Pegando o email da loja
 require_once '../config/conecta.class.php';
 $pdo = new Conecta();
-$sacLoja = 'daniel@tmw.com.br'; #$pdo->execute('SELECT CON_EMAIL_LOJA FROM config', true)->CON_EMAIL_LOJA;
+$sacLoja = 'kamile@tmw.com.br'; #$pdo->execute('SELECT CON_EMAIL_LOJA FROM config', true)->CON_EMAIL_LOJA;
 
 // Mensagem email
 $msgMail = preg_replace('/[\n\r\s\t]+/', ' ',
