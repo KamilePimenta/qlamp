@@ -20,36 +20,34 @@ if (! isset($foto[ 'tmp_name' ]) || empty($foto[ 'tmp_name' ]) || ! preg_match('
     Saida::json('Envie-nos uma foto do ambiente para que possamos indicar a melhor lâmpada para você', true);
 }
 
-// Tentando mover foto
-$fileContents = file_get_contents($foto[ 'tmp_name' ]);
-$mime = $foto[ 'type' ];
-$img = 'data: ' . $mime . ';base64,' . base64_encode($fileContents);
-
 // Pegando o email da loja
 require_once '../config/conecta.class.php';
 $pdo = new Conecta();
-$sacLoja = $pdo->execute('SELECT CON_EMAIL_LOJA FROM config', true)->CON_EMAIL_LOJA;
+$sacLoja = 'daniel@tmw.com.br'; #$pdo->execute('SELECT CON_EMAIL_LOJA FROM config', true)->CON_EMAIL_LOJA;
 
-// Montando email
-$mensagem = "<html><body>
-    <p>Olá, gostaria de saber qual a melhor lâmpada para meu ambiente.</p>
-    <p>
-        <strong>Nome: </strong> $nome<br>
-        <strong>Email:</strong> $email<br>
-        <strong>Mensagem:</strong> $msg
-    </p>
-    <p><strong>Foto</strong></p>
-    <img src='$img' alt='Imagem Ambiente' style='max-width: 100%; display: block;'>
-</body></html>";
+// Mensagem email
+$msgMail = preg_replace('/[\n\r\s\t]+/', ' ',
+    "<html><body>
+        <p>Olá, gostaria de saber qual a melhor lâmpada para meu ambiente.</p>
+        <p>
+            <strong>Nome: </strong> $nome<br>
+            <strong>Email:</strong> $email<br>
+            <strong>Mensagem:</strong> $msg
+        </p>
+        <p><small>Imagem em anexo.</small></p>
+    </body></html>"
+);
 
-// Configurando e enviando email:
-$headers = "MIME-Version: 1.1" . PHP_EOL;
-$headers .= "Content-type: text/html; charset=utf-8" . PHP_EOL;
-$headers .= "From: " . $nome . " <" . $sacLoja . ">" . PHP_EOL;
-$headers .= "Return-Path: " . $sacLoja . PHP_EOL;
-$headers .= "Reply-To: " . $sacLoja . PHP_EOL;
+require_once 'PHPMailer/class.phpmailer.php';
+$mail = new PHPMailer();
+$mail->setFrom($sacLoja, $nome);
+$mail->addReplyTo($email);
+$mail->addAddress($sacLoja);
+$mail->Subject = "Qual a melhor foto para meu ambiente? | $nome <$email>";
+$mail->msgHTML($msgMail);
+$mail->addAttachment($foto[ 'tmp_name' ], $foto[ 'name' ]);
 
-if (! mail($email, "Qual a melhor foto para meu ambiente? | $nome <$email>", $mensagem, $headers, "-r" . $sacLoja)) {
+if (! $mail->send()) {
     Saida::json('Desculpe-nos, não foi possível enviar sua imagem no momento. Tente novamente mais tarde', true);
 }
 
