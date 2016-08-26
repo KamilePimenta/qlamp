@@ -21,18 +21,36 @@ if (! isset($foto[ 'tmp_name' ]) || empty($foto[ 'tmp_name' ]) || ! preg_match('
 }
 
 // Tentando mover foto
-$pathImg = __DIR__ . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'tmp' . DIRECTORY_SEPARATOR . $foto[ 'name' ];
-if (! @move_uploaded_file($foto[ 'tmp_name' ], $pathImg)) {
-    Saida::json(
-        'Desculpe, não consegui receber seu arquivo.',
-        true
-    );
-}
+$fileContents = file_get_contents($foto[ 'tmp_name' ]);
+$mime = $foto[ 'type' ];
+$img = 'data: ' . $mime . ';base64,' . base64_encode($fileContents);
 
+// Pegando o email da loja
 require_once '../config/conecta.class.php';
 $pdo = new Conecta();
-
 $sacLoja = $pdo->execute('SELECT CON_EMAIL_LOJA FROM config', true)->CON_EMAIL_LOJA;
-?>
 
-<img src="img/tmp/<?=$foto[ 'name' ] ?>" alt="<?=$foto[ 'name' ] ?>" width="100">
+// Montando email
+$mensagem = "<html><body>
+    <p>Olá, gostaria de saber qual a melhor lâmpada para meu ambiente.</p>
+    <p>
+        <strong>Nome: </strong> $nome<br>
+        <strong>Email:</strong> $email<br>
+        <strong>Mensagem:</strong> $msg
+    </p>
+    <p><strong>Foto</strong></p>
+    <img src='$img' alt='Imagem Ambiente' style='max-width: 100%; display: block;'>
+</body></html>";
+
+// Configurando e enviando email:
+$headers = "MIME-Version: 1.1" . PHP_EOL;
+$headers .= "Content-type: text/html; charset=utf-8" . PHP_EOL;
+$headers .= "From: " . $nome . " <" . $sacLoja . ">" . PHP_EOL;
+$headers .= "Return-Path: " . $sacLoja . PHP_EOL;
+$headers .= "Reply-To: " . $sacLoja . PHP_EOL;
+
+if (! mail($email, "Qual a melhor foto para meu ambiente? | $nome <$email>", $mensagem, $headers, "-r" . $sacLoja)) {
+    Saida::json('Desculpe-nos, não foi possível enviar sua imagem no momento. Tente novamente mais tarde', true);
+}
+
+Saida::json('Sua solicitação foi enviada! Aguarde nosso contato.');
