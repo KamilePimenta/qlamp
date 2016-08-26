@@ -25,6 +25,10 @@ body {
     text-align: center;
 }
 
+#qLamp .content .campo {
+    display: inline-block;
+}
+
 /* Página Principal */
 #qLamp p.first {
     color: #66e800;
@@ -40,7 +44,7 @@ body {
     height: 136px;
 }
 
-#qLamp p, #qLamp form.mensagem label, #qLamp .pronto p {
+#qLamp p, #qLamp .msg label, #qLamp .pronto p {
     color: #fff;
     font: 30px Arial, Helvetica, sans-serif;
 }
@@ -71,22 +75,22 @@ body {
 }
 
 /* Mensagem */
-#qLamp form.mensagem {
+#qLamp .msg {
     margin-top: 50px;
 }
 
-#qLamp form.mensagem .campo {
+#qLamp .msg .campo {
     margin-bottom: 20px;
 }
 
-#qLamp form.mensagem label {
+#qLamp .msg label {
     display: block;
     margin-bottom: 5px;
     font-size: 20px;
     text-align: left;
 }
 
-#qLamp form.mensagem input, #qLamp form.mensagem textarea {
+#qLamp .msg input, #qLamp .msg textarea {
     display: block;
     width: 100%;
     padding: 10px;
@@ -99,11 +103,11 @@ body {
     border-radius: 5px;
 }
 
-#qLamp form.mensagem textarea {
+#qLamp .msg textarea {
     min-height: 100px;
 }
 
-#qLamp form.mensagem button {
+#qLamp .msg button {
     padding: 12px 40px 8px;
     background-color: #66e800;
     color: #122628;
@@ -116,7 +120,7 @@ body {
     transition: background .2s;
 }
 
-#qLamp form.mensagem button:hover {
+#qLamp .msg button:hover {
     background-color: #122628;
     color: #66e800;
 }

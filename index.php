@@ -9,16 +9,18 @@
     <body>
         <div id="qLamp">
             <div class="content">
-                <form class="imagem" enctype="multipart/form-data" method="post">
-                    <div class="principal" style="display: none">
+                <form action="enviadados.php" class="imagem" enctype="multipart/form-data" method="post">
+                    <div class="principal">
                         <p class="first"><span class="big">Qual é</span> a lâmpada?</p>
                         <p>descubra a lâmpada ideal para a sua casa</p>
-                        <input class="foto" type="file" id="foto" name="foto">
-                        <label class="text" for="foto">Foto da Lâmpada</label>
-                        <img class="img logo" src="https://www.aiha.com.br/img/arquivos/layout/qlamp/logo.png"
+                        <div class="imagem">
+                            <input class="foto" type="file" id="foto" name="foto">
+                            <label class="text" for="foto">Foto da Lâmpada</label>
+                        </div>
+                        <img class="img logo" src="img/logo.png"
                              alt="Logo AIHA" />
                     </div>
-                    <div class="msg" style="display: none">
+                    <div class="msg">
                         <div class="campo">
                             <label for="nome">Nome:</label>
                             <input type="text" id="nome" name="nome">
