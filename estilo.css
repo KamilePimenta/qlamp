@@ -1,0 +1,204 @@
+@import url("//tmwxd.com.br/fontes/bebasneue/bebasneue.css");
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+    outline: 0 none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #122628;
+}
+
+#qLamp {
+    color: #66e800;
+    font: 40px BebasNeue, "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#qLamp .content {
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Página Principal */
+#qLamp p.first {
+    color: #66e800;
+    margin-bottom: 20px;
+    padding-bottom: 7px;
+    font: 76px BebasNeue, "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #66e800;
+}
+
+#qLamp p .big {
+    display: block;
+    font-size: 140px;
+    height: 136px;
+}
+
+#qLamp p, #qLamp form.mensagem label, #qLamp .pronto p {
+    color: #fff;
+    font: 30px Arial, Helvetica, sans-serif;
+}
+
+#qLamp form.imagem {
+    position: relative;
+    width: 305px;
+    height: 116px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+#qLamp .foto {
+    display: block;
+    width: 116px;
+    height: 116px;
+    background: url("img/ico-cam.png") no-repeat left top;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+
+#qLamp .text {
+    position: absolute;
+    left: 140px;
+    top: 50%;
+    margin-top: -18px;
+    font-size: 30px;
+}
+
+/* Mensagem */
+#qLamp form.mensagem {
+    margin-top: 50px;
+}
+
+#qLamp form.mensagem .campo {
+    margin-bottom: 20px;
+}
+
+#qLamp form.mensagem label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 20px;
+    text-align: left;
+}
+
+#qLamp form.mensagem input, #qLamp form.mensagem textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    color: #66e800;
+    font-size: 16px;
+    border: 1px solid #66e800;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#qLamp form.mensagem textarea {
+    min-height: 100px;
+}
+
+#qLamp form.mensagem button {
+    padding: 12px 40px 8px;
+    background-color: #66e800;
+    color: #122628;
+    font: 30px BebasNeue, "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border: 1px solid #66e800;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+#qLamp form.mensagem button:hover {
+    background-color: #122628;
+    color: #66e800;
+}
+
+/* Página Final */
+#qLamp .pronto p {
+    line-height: 70px;
+}
+
+#qLamp .pronto .dif {
+    display: block;
+    color: #66e800;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+#qLamp .pronto .voltar {
+    display: block;
+    width: 170px;
+    margin: 50px auto 0;
+    color: #66e800;
+    font-size: 30px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#qLamp .pronto .voltar::before {
+    content: '';
+    display: block;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 15px;
+    background: url("img/ico-voltar.png") no-repeat left top;
+}
+
+/* BREAKPOINTS */
+/* Página Principal */
+@media (max-width: 700px) {
+    #qLamp .content {
+        width: 100%;
+        padding: 0 75px;
+    }
+
+    #qLamp p.first {
+        margin-bottom: 50px;
+        padding-bottom: 37px;
+    }
+}
+
+@media (max-width: 420px) {
+    #qLamp .content {
+        padding: 0 25px
+    }
+
+    #qLamp p.first {
+        margin-bottom: 15px;
+        padding-bottom: 0;
+        font-size: 68px;
+    }
+
+    #qLamp p .big {
+        height: 114px;
+        font-size: 120px;
+    }
+
+    #qLamp form {
+        height: 92px;
+        padding: 20px 0;
+    }
+
+    #qLamp .foto {
+        background-size: 80% auto;
+    }
+
+    #qLamp .text {
+        left: 110px;
+        margin-top: -13px;
+        font-size: 26px;
+    }
+
+    #qLamp .pronto p {
+        line-height: 70px;
+        font-size: 22px;
+    }
+}
