@@ -1,15 +1,15 @@
 /**
- * Muda posição do formulário para p´roxima tela
+ * Muda posição do formulário para próxima tela
  * @param form Formulário (jQuery)
  * @param pos Posição que deve ficar
  */
 var ajeitaForm = function ( form, pos ) {
     form.css( {
-        '-webkit-transform': 'translateX(' + pos + 'px' + ')',
-        '-moz-transform'   : 'translateX(' + pos + 'px' + ')',
-        '-ms-transform'    : 'translateX(' + pos + 'px' + ')',
-        '-o-transform'     : 'translateX(' + pos + 'px' + ')',
-        'transform'        : 'translateX(' + pos + 'px' + ')'
+        '-webkit-transform': 'translateX(' + pos + 'px)',
+        '-moz-transform'   : 'translateX(' + pos + 'px)',
+        '-ms-transform'    : 'translateX(' + pos + 'px)',
+        '-o-transform'     : 'translateX(' + pos + 'px)',
+        'transform'        : 'translateX(' + pos + 'px)'
     } );
 
 };
