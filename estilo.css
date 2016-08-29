@@ -60,6 +60,11 @@ body {
     color: #fff;
 }
 
+#qLamp .pronto p.erro {
+    color: #c32a37;
+    text-shadow: 0 0 2px #e80000;
+}
+
 #qLamp .principal .text {
     cursor: pointer;
 }
@@ -239,7 +244,7 @@ body {
     }
 
     #qLamp .pronto p {
-        line-height: 70px;
-        font-size: 22px;
+        line-height: 60px;
+        font-size: 28px;
     }
 }

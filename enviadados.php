@@ -52,8 +52,8 @@ $mail->addAttachment($foto[ 'tmp_name' ], $foto[ 'name' ]);
 
 // Foi enviado?
 if (! $mail->send()) {
-    Saida::json('Desculpe-nos, não foi possível enviar sua imagem no momento. Tente novamente mais tarde', true);
+    Saida::json('Desculpe-nos, não foi possível enviar sua imagem no momento.<br>Tente novamente mais tarde', true);
 }
 
 // Emite saída de sucesso
-Saida::json('Sua solicitação foi enviada! Aguarde nosso contato.');
+Saida::json('Sua solicitação foi enviada!<br>Aguarde nosso contato.');
