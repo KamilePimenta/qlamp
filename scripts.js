@@ -1,16 +1,21 @@
-$( function () {
-    var qLamp = $( '#qLamp' );
-    $( '#foto' ).change( function () {
-        qLamp.find( 'form' ).eq( 0 ).css( {
-            '-webkit-transform': 'translateX(' + -305 + 'px' + ')',
-            '-moz-transform'   : 'translateX(' + -305 + 'px' + ')',
-            '-ms-transform'    : 'translateX(' + -305 + 'px' + ')',
-            '-o-transform'     : 'translateX(' + -305 + 'px' + ')',
-            'transform'        : 'translateX(' + -305 + 'px' + ')'
-        } );
+var ajeitaForm = function ( form, pos ) {
+    form.css( {
+        '-webkit-transform': 'translateX(' + pos + 'px' + ')',
+        '-moz-transform'   : 'translateX(' + pos + 'px' + ')',
+        '-ms-transform'    : 'translateX(' + pos + 'px' + ')',
+        '-o-transform'     : 'translateX(' + pos + 'px' + ')',
+        'transform'        : 'translateX(' + pos + 'px' + ')'
     } );
 
+};
+
+$( function () {
     var form = $( '#form-lamp' );
+
+    $( '#foto' ).change( function () {
+        ajeitaForm( form, -305 );
+    } );
+
     form.submit( function ( e ) {
         e.preventDefault();
 
@@ -54,13 +59,7 @@ $( function () {
                 wait.fadeOut();
 
                 // Mostra mensagem de retorno
-                form.css( {
-                    '-webkit-transform': 'translateX(' + -610 + 'px' + ')',
-                    '-moz-transform'   : 'translateX(' + -610 + 'px' + ')',
-                    '-ms-transform'    : 'translateX(' + -610 + 'px' + ')',
-                    '-o-transform'     : 'translateX(' + -610 + 'px' + ')',
-                    'transform'        : 'translateX(' + -610 + 'px' + ')'
-                } );
+                ajeitaForm( form, -610 );
 
                 console.log( dados.msg );
                 console.log( dados.erro );
