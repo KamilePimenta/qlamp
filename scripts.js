@@ -19,8 +19,10 @@ var ajeitaForm = function ( form, pos ) {
  */
 $( function () {
 
-    // Formulário
+    // Formulário e botão voltar
     var form = $( '#form-lamp' );
+    var btnVoltar = form.find( '.voltar' ).eq( 0 );
+    var btnVoltarTexto = btnVoltar.html();
 
     // Houve escolha de foto?
     $( '#foto' ).change( function () {
@@ -38,12 +40,9 @@ $( function () {
             return false;
         }
 
-        // Pegando elementos de espera, url do form e dados do botão voltar
+        // Pegando elementos de espera e url do form
         var wait = $( '#wait' );
         var url  = form.attr( 'action' );
-        var btnVoltar = form.find( '.voltar' ).eq( 0 );
-        var btnVoltarTexto = btnVoltar.html();
-
 
         // Pegando todos os dados, incluindo arquivo, do form
         var formData = new FormData( this );
