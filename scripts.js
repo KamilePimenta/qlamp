@@ -82,9 +82,26 @@ $( function () {
                 var retorno = $( '#retorno' );
                 retorno.html( dados.msg );
 
+                var btnVoltar = form.find( '.voltar' ).eq( 0 );
+                var btnVoltarTexto = btnVoltar.html();
+
                 // Mensagem é de erro?
-                if ( dados.erro )
+                if ( dados.erro ) {
+                    // Coloca classe de erro na div de retorno
                     retorno.addClass( 'erro' );
+                    // Altera o botão de voltar para que leve o cliente pra tela inicial
+                    btnVoltar
+                        .html( 'Enviar outra Foto' )
+                        .unbind( 'click' )
+                        .bind( 'click', function ( e ) {
+                            e.preventDefault();
+                            ajeitaForm( form, 0 );
+                        } );
+                } else
+                    // Mantém o obtão voltar como original
+                    btnVoltar
+                        .html( btnVoltarTexto )
+                        .unbind( 'click' );
 
                 // Some com o aguarde
                 wait.fadeOut();
