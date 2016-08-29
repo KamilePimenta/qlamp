@@ -60,6 +60,22 @@ $( function () {
             contentType: false,
             processData: false,
 
+            // Barra de progresso
+            xhr: function () {
+                var myXhr = $.ajaxSettings.xhr();
+                // Avalia se tem suporte a propriedade upload
+                if ( myXhr.upload ) {
+                    myXhr.upload.addEventListener( 'progress', function ( progress ) {
+                        // Pega o percentual de envio
+                        // progress.loaded = quanto já foi enviado (bytes)
+                        // progress.total = tamanho do arquivo (bytes)
+                        var percentual = Math.round( progress.loaded / progress.total * 100 ) + '%';
+                        wait.html( 'Enviando... (' + percentual + ')' );
+                    }, false );
+                }
+                return myXhr;
+            },
+
             // Sucesso
             success: function ( dados ) {
                 // Colocando mensagem de retorno
