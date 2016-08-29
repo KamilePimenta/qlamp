@@ -5,8 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Qual é a Lâmpada?</title>
         <link href="estilo.css" rel="stylesheet" type="text/css">
-        <script src="../js/bases/jquery.2.min.js" type="text/javascript"></script>
-        <script src="scripts.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="qLamp">
@@ -17,7 +15,7 @@
                         <p>descubra a lâmpada ideal para a sua casa</p>
                         <div class="imagem">
                             <input class="foto" type="file" id="foto" name="foto">
-                            <label class="text" for="foto">Foto da Lâmpada</label>
+                            <label class="text" for="foto">Foto do Ambiente</label>
                         </div>
                         <img class="img logo" src="img/logo.png"
                              alt="Logo AIHA" />
@@ -34,7 +32,7 @@
                         <div class="campo">
                             <label for="msg">Mensagem:</label>
                             <textarea id="msg" name="msg"
-                                      placeholder="Informe qual tipo de lâmpada que você precisa"></textarea>
+                                      placeholder="Deixe-nos saber mais sobre sua necessidade"></textarea>
                         </div>
                         <button class="enviar" type="submit">Enviar</button>
                     </div>
@@ -45,5 +43,10 @@
                 </form>
             </div>
         </div>
+
+        <div id="wait">Enviando...</div>
+
+        <script src="../js/bases/jquery.2.min.js" type="text/javascript"></script>
+        <script src="scripts.js" type="text/javascript"></script>
     </body>
 </html>
