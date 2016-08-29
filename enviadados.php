@@ -1,10 +1,12 @@
 <?php
 require_once 'Saida.php';
 
+// Verifica se foi enviada uma foto (se não é acesso direto)
 if (! isset($_FILES[ 'foto' ])) {
     Saida::json('Acesso Negado', true);
 }
 
+// Pega os dados enviados
 $foto = $_FILES[ 'foto' ];
 $nome = filter_input(INPUT_POST, 'nome');
 $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
@@ -12,7 +14,7 @@ $msg = filter_input(INPUT_POST, 'msg');
 
 // Verificando email
 if (empty($email)) {
-    Saida::json('Digite um email válido', true);
+    Saida::json('Por favor, nos informe um email válido', true);
 }
 
 // Verificando imagem
@@ -38,6 +40,7 @@ $msgMail = preg_replace('/[\n\r\s\t]+/', ' ',
     </body></html>"
 );
 
+// Setando o envio de email
 require_once 'PHPMailer/class.phpmailer.php';
 $mail = new PHPMailer();
 $mail->setFrom($sacLoja, $nome);
@@ -47,8 +50,10 @@ $mail->Subject = "Qual a melhor foto para meu ambiente? | $nome <$email>";
 $mail->msgHTML($msgMail);
 $mail->addAttachment($foto[ 'tmp_name' ], $foto[ 'name' ]);
 
+// Foi enviado?
 if (! $mail->send()) {
     Saida::json('Desculpe-nos, não foi possível enviar sua imagem no momento. Tente novamente mais tarde', true);
 }
 
+// Emite saída de sucesso
 Saida::json('Sua solicitação foi enviada! Aguarde nosso contato.');
