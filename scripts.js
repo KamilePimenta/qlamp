@@ -1,3 +1,8 @@
+/**
+ * Muda posição do formulário para p´roxima tela
+ * @param form Formulário (jQuery)
+ * @param pos Posição que deve ficar
+ */
 var ajeitaForm = function ( form, pos ) {
     form.css( {
         '-webkit-transform': 'translateX(' + pos + 'px' + ')',
@@ -9,13 +14,21 @@ var ajeitaForm = function ( form, pos ) {
 
 };
 
+/**
+ * Iniciando documento
+ */
 $( function () {
+
+    // Formulário
     var form = $( '#form-lamp' );
 
+    // Houve escolha de foto?
     $( '#foto' ).change( function () {
+        // Próxima tela
         ajeitaForm( form, -305 );
     } );
 
+    // Formulário foi submetido?
     form.submit( function ( e ) {
         e.preventDefault();
 
@@ -25,15 +38,17 @@ $( function () {
             return false;
         }
 
+        // Pegando elementos de espera e url do form
         var wait = $( '#wait' );
         var url  = form.attr( 'action' );
 
-        // Pegando todos os dados, incluindo arquivos
+        // Pegando todos os dados, incluindo arquivo, do form
         var formData = new FormData( this );
 
         // Aguarde...
         wait.fadeIn();
 
+        // Enviando dados
         $.ajax( {
             url     : url,
             type    : 'POST',
