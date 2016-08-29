@@ -38,9 +38,12 @@ $( function () {
             return false;
         }
 
-        // Pegando elementos de espera e url do form
+        // Pegando elementos de espera, url do form e dados do botão voltar
         var wait = $( '#wait' );
         var url  = form.attr( 'action' );
+        var btnVoltar = form.find( '.voltar' ).eq( 0 );
+        var btnVoltarTexto = btnVoltar.html();
+
 
         // Pegando todos os dados, incluindo arquivo, do form
         var formData = new FormData( this );
@@ -81,9 +84,6 @@ $( function () {
                 // Colocando mensagem de retorno
                 var retorno = $( '#retorno' );
                 retorno.html( dados.msg );
-
-                var btnVoltar = form.find( '.voltar' ).eq( 0 );
-                var btnVoltarTexto = btnVoltar.html();
 
                 // Mensagem é de erro?
                 if ( dados.erro ) {
